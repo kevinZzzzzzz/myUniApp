@@ -5,7 +5,10 @@
 
 interface NavigateToOptions {
   url: "/pages/index/index" |
-       "/pages/about/about";
+       "/pages/about/about" |
+       "/pages/individual/index" |
+       "/pages/shop/index" |
+       "/pages/stash/index";
 }
 interface RedirectToOptions extends NavigateToOptions {}
 

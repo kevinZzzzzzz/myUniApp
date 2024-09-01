@@ -1,11 +1,11 @@
-<route lang="json5">
+<!-- <route lang="json5">
 {
   layout: 'demo',
   style: {
     navigationBarTitleText: '请求',
   },
 }
-</route>
+</route> -->
 
 <template>
   <view class="p-6 text-center">

@@ -14,18 +14,18 @@
     }
   },
   "tabBar": {
-    "color": "#999999",
-    "selectedColor": "#018d71",
-    "backgroundColor": "#F8F8F8",
+    "color": "#2c2c2c",
+    "selectedColor": "#2c2c2c",
     "borderStyle": "black",
+    "backgroundColor": "#ffffff",
     "height": "50px",
     "fontSize": "10px",
     "iconWidth": "24px",
     "spacing": "3px",
     "list": [
       {
-        "iconPath": "static/tabbar/home.png",
-        "selectedIconPath": "static/tabbar/homeHL.png",
+        "iconPath": "static/tabbar/shouye.png",
+        "selectedIconPath": "static/tabbar/shouyeAct.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
@@ -34,6 +34,18 @@
         "selectedIconPath": "static/tabbar/exampleHL.png",
         "pagePath": "pages/about/about",
         "text": "关于"
+      },
+      {
+        "iconPath": "static/tabbar/cangku.png",
+        "selectedIconPath": "static/tabbar/cangkuAct.png",
+        "pagePath": "pages/stash/index",
+        "text": "仓库"
+      },
+      {
+        "iconPath": "static/tabbar/wode.png",
+        "selectedIconPath": "static/tabbar/wodeAct.png",
+        "pagePath": "pages/individual/index",
+        "text": "我的"
       }
     ]
   },
@@ -42,15 +54,32 @@
       "path": "pages/index/index",
       "type": "home",
       "style": {
-        "navigationStyle": "custom",
         "navigationBarTitleText": "首页"
       }
     },
     {
       "path": "pages/about/about",
+      "type": "page"
+    },
+    {
+      "path": "pages/individual/index",
       "type": "page",
       "style": {
-        "navigationBarTitleText": "关于"
+        "navigationBarTitleText": "个人中心"
+      }
+    },
+    {
+      "path": "pages/stash/index",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "仓库"
+      }
+    },
+    {
+      "path": "pages/shop/index",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "商城"
       }
     }
   ],

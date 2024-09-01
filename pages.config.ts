@@ -8,6 +8,7 @@ export default defineUniPages({
     navigationBarTextStyle: 'black',
     backgroundColor: '#FFFFFF',
   },
+  // 自动注册机制
   easycom: {
     autoscan: true,
     custom: {
@@ -17,10 +18,10 @@ export default defineUniPages({
     },
   },
   tabBar: {
-    color: '#999999',
-    selectedColor: '#018d71',
-    backgroundColor: '#F8F8F8',
+    color: '#2c2c2c',
+    selectedColor: '#2c2c2c',
     borderStyle: 'black',
+    backgroundColor: '#ffffff',
     height: '50px',
     fontSize: '10px',
     iconWidth: '24px',

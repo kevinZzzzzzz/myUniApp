@@ -26,6 +26,7 @@ module.exports = {
   // 自定义规则
   rules: {
     'prettier/prettier': true,
+    'order/properties-order': null,
     // 允许 global 、export 、v-deep等伪类
     'selector-pseudo-class-no-unknown': [
       true,

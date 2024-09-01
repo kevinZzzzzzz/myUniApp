@@ -1,11 +1,11 @@
-<route lang="json5" type="page">
+<!-- <route lang="json5" type="page">
 {
   layout: 'default',
   style: {
     navigationBarTitleText: '上传-状态一体化',
   },
 }
-</route>
+</route> -->
 
 <template>
   <view class="p-4 text-center">
