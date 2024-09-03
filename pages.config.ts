@@ -28,8 +28,8 @@ export default defineUniPages({
     spacing: '3px',
     list: [
       {
-        iconPath: 'static/tabbar/home.png',
-        selectedIconPath: 'static/tabbar/homeHL.png',
+        iconPath: 'static/tabbar/shouye.png',
+        selectedIconPath: 'static/tabbar/shouyeAct.png',
         pagePath: 'pages/index/index',
         text: '首页',
       },
@@ -39,6 +39,41 @@ export default defineUniPages({
         pagePath: 'pages/about/about',
         text: '关于',
       },
+      {
+        iconPath: 'static/tabbar/cangku.png',
+        selectedIconPath: 'static/tabbar/cangkuAct.png',
+        pagePath: 'pages/stash/index',
+        text: '仓库',
+      },
+      {
+        iconPath: 'static/tabbar/wode.png',
+        selectedIconPath: 'static/tabbar/wodeAct.png',
+        pagePath: 'pages/individual/index',
+        text: '我的',
+      },
     ],
   },
+  pages: [
+    {
+      path: 'pages/index/index',
+      type: 'home',
+    },
+    {
+      path: 'pages/about/about',
+      type: 'page',
+    },
+    {
+      path: 'pages/individual/index',
+      type: 'page',
+    },
+    {
+      path: 'pages/shop/index',
+      type: 'page',
+    },
+    {
+      path: 'pages/stash/index',
+      type: 'page',
+    },
+  ],
+  subPackages: [],
 })

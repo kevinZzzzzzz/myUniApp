@@ -53,34 +53,27 @@
     {
       "path": "pages/index/index",
       "type": "home",
-      "style": {
-        "navigationBarTitleText": "首页"
-      }
+      "style": {}
     },
     {
       "path": "pages/about/about",
-      "type": "page"
+      "type": "page",
+      "style": {}
     },
     {
       "path": "pages/individual/index",
       "type": "page",
-      "style": {
-        "navigationBarTitleText": "个人中心"
-      }
-    },
-    {
-      "path": "pages/stash/index",
-      "type": "page",
-      "style": {
-        "navigationBarTitleText": "仓库"
-      }
+      "style": {}
     },
     {
       "path": "pages/shop/index",
       "type": "page",
-      "style": {
-        "navigationBarTitleText": "商城"
-      }
+      "style": {}
+    },
+    {
+      "path": "pages/stash/index",
+      "type": "page",
+      "style": {}
     }
   ],
   "subPackages": []
