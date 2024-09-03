@@ -10,14 +10,15 @@
         <span>ID: {{ userInfo.ID }}</span>
       </view>
     </view>
-    <!-- <BoxComp />
-    <OrderBox />
+    <BoxComp />
+    <!-- <OrderBox />
     <AppBox /> -->
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, defineAsyncComponent } from 'vue'
+import BoxComp from './components/BoxComp.vue'
 defineOptions({
   name: 'IndividualCenter',
 })
@@ -78,10 +79,12 @@ page {
       &_username {
         margin-bottom: 5px;
         display: flex;
+        align-items: center;
         &_img {
           width: 12px;
           height: 12px;
           cursor: pointer;
+          margin-left: 10px;
         }
       }
       span {
