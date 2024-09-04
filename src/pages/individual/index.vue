@@ -9,12 +9,12 @@
           {{ userInfo.username }}
           <image class="content_info_detail_username_img" src="@img/editIcon.png" alt="" />
         </view>
-        <span>ID: {{ userInfo.ID }}</span>
+        <span class="content_info_detail_text">ID: {{ userInfo.ID }}</span>
       </view>
     </view>
     <BoxComp />
     <OrderBox />
-    <!-- <AppBox /> -->
+    <AppBox />
   </view>
 </template>
 
@@ -22,6 +22,7 @@
 import { ref, reactive, defineAsyncComponent } from 'vue'
 import BoxComp from './components/BoxComp.vue'
 import OrderBox from './components/OrderBox.vue'
+import AppBox from './components/AppBox.vue'
 import userAvatar from '@img/userAvatar.png'
 defineOptions({
   name: 'IndividualCenter',
@@ -97,17 +98,20 @@ page {
     // margin-bottom: 20px;
     &_detail {
       &_username {
-        margin-bottom: 5px;
+        // margin-bottom: 5px;
         display: flex;
         align-items: center;
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
         &_img {
-          width: 12px;
-          height: 12px;
+          width: 15px;
+          height: 15px;
           cursor: pointer;
           margin-left: 10px;
         }
       }
-      span {
+      &_text {
         font-size: 14px;
         color: #999;
       }
@@ -118,8 +122,8 @@ page {
   display: none;
 }
 .avatar-wrapper {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   margin: 0;
   padding: 0;
   border-radius: 50%;

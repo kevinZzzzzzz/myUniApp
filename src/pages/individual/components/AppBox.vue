@@ -1,19 +1,14 @@
 <template>
-  <div class="OrderBox">
-    <div class="OrderBox_header">
-      <h1 class="OrderBox_header_title">我的订单</h1>
-      <div class="OrderBox_header_right">
-        <h6 class="OrderBox_header_right_text">全部订单</h6>
-        <image class="OrderBox_header_right_img" src="@img/arrowRight.png" alt="" />
-      </div>
+  <div class="AppBox">
+    <div class="AppBox_header">
+      <h1 class="AppBox_header_title">我的应用</h1>
+      <div class="AppBox_header_right"></div>
     </div>
-    <div class="OrderBox_content">
-      <ul class="OrderBox_content_list">
-        <li class="OrderBox_content_list_item" v-for="(item, idx) in orderStatus" :key="idx">
-          <wd-badge :modelValue="item.value" max="99">
-            <image class="OrderBox_content_list_item_img" :src="`/static/image/${item.icon}.png`" />
-            <p class="OrderBox_content_list_item_text">{{ item.name }}</p>
-          </wd-badge>
+    <div class="AppBox_content">
+      <ul class="AppBox_content_list">
+        <li class="AppBox_content_list_item" v-for="(item, idx) in orderStatus" :key="idx">
+          <image class="AppBox_content_list_item_img" :src="`/static/image/${item.icon}.png`" />
+          <p class="AppBox_content_list_item_text">{{ item.name }}</p>
         </li>
       </ul>
     </div>
@@ -23,34 +18,30 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 defineOptions({
-  name: 'OrderBox',
+  name: 'AppBox',
 })
 const orderStatus = reactive([
   {
-    name: '待付款',
-    icon: 'stayPayIcon',
-    value: 9,
+    name: '地址管理',
+    icon: 'dizhiguanli',
   },
   {
-    name: '待发货',
-    icon: 'stayDeliverIcon',
-    value: 9,
+    name: '地址管理',
+    icon: 'dizhiguanli',
   },
   {
-    name: '待收货',
-    icon: 'stayReceiveIcon',
-    value: 9,
+    name: '地址管理',
+    icon: 'dizhiguanli',
   },
   {
-    name: '已完成',
-    icon: 'finishIcon',
-    value: 9,
+    name: '地址管理',
+    icon: 'dizhiguanli',
   },
 ])
 </script>
 
 <style scoped lang="scss">
-.OrderBox {
+.AppBox {
   margin-top: 20px;
   // width: 100%;
   padding: 10px;
