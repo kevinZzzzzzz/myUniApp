@@ -3,12 +3,12 @@
   <view>
     <ul class="boxInfo">
       <li class="boxInfo_item">
-        <p>商品</p>
-        <h6>0</h6>
+        <h3 class="boxInfo_item_title">商品</h3>
+        <h6 class="boxInfo_item_ctx">{{ boxInfo.data.goods }}</h6>
       </li>
       <li class="boxInfo_item">
-        <p>盲盒</p>
-        <h6>0</h6>
+        <h3 class="boxInfo_item_title">盲盒</h3>
+        <h6 class="boxInfo_item_ctx">{{ boxInfo.data.box }}</h6>
       </li>
     </ul>
   </view>
@@ -18,6 +18,12 @@
 import { ref } from 'vue'
 defineOptions({
   name: 'BoxComp',
+})
+const boxInfo = reactive({
+  data: {
+    goods: 0,
+    box: 0,
+  },
 })
 </script>
 
@@ -42,18 +48,20 @@ defineOptions({
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    p {
+    &_title {
+      font-size: 18px;
+      font-weight: bolder;
+      margin-bottom: 5px;
+    }
+    &_ctx {
       font-size: 16px;
       font-weight: bolder;
     }
-    h6 {
-      font-size: 16px;
-    }
   }
-  li:nth-of-type(1) {
+  &_item:nth-of-type(1) {
     position: relative;
   }
-  li:nth-of-type(1)::before {
+  &_item:nth-of-type(1)::before {
     content: '';
     width: 2px;
     height: 40px;

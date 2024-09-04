@@ -1,31 +1,39 @@
 <template>
   <view class="content">
     <view class="content_info">
-      <img class="content_info_img" src="@img/userAvatar.png" />
+      <button class="avatar-wrapper" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
+        <image :src="userAvatars" />
+      </button>
       <view class="content_info_detail" @click="gotoLogin">
         <view class="content_info_detail_username">
           {{ userInfo.username }}
-          <img class="content_info_detail_username_img" src="@img/editIcon.png" alt="" />
+          <image class="content_info_detail_username_img" src="@img/editIcon.png" alt="" />
         </view>
         <span>ID: {{ userInfo.ID }}</span>
       </view>
     </view>
     <BoxComp />
-    <!-- <OrderBox />
-    <AppBox /> -->
+    <OrderBox />
+    <!-- <AppBox /> -->
   </view>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, defineAsyncComponent } from 'vue'
 import BoxComp from './components/BoxComp.vue'
+import OrderBox from './components/OrderBox.vue'
+import userAvatar from '@img/userAvatar.png'
 defineOptions({
   name: 'IndividualCenter',
 })
 const title = ref<string>('Hello world')
+const userAvatars = ref<string>(userAvatar)
 const userInfo = reactive({
   username: '188****5553',
   ID: 292355,
+})
+onMounted(() => {
+  checkLogin()
 })
 const gotoLogin = () => {
   uni.login({
@@ -39,6 +47,7 @@ const gotoLogin = () => {
         success: function (res) {
           const userInfo = res.userInfo // 用户信息
           console.log(res, 'res1')
+
           // 其他操作...
         },
         fail: function (err) {
@@ -50,6 +59,22 @@ const gotoLogin = () => {
       console.log(err, 'err2')
     },
   })
+}
+const checkLogin = () => {
+  uni.checkSession({
+    success: function (RES) {
+      console.log('登录状态有效', RES)
+    },
+    fail: function () {
+      console.log('登录状态过期')
+      // 其他操作...
+    },
+  })
+}
+const onChooseAvatar = (e) => {
+  const { avatarUrl } = e.detail
+  console.log(avatarUrl)
+  userAvatars.value = avatarUrl
 }
 </script>
 
@@ -70,11 +95,6 @@ page {
     margin: 0 -12px;
     background-color: #fff;
     // margin-bottom: 20px;
-    &_img {
-      width: 45px;
-      height: 45px;
-      margin-right: 10px;
-    }
     &_detail {
       &_username {
         margin-bottom: 5px;
@@ -96,5 +116,19 @@ page {
 }
 .content::-webkit-scrollbar {
   display: none;
+}
+.avatar-wrapper {
+  width: 45px;
+  height: 45px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  margin-right: 10px;
+  image {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>
