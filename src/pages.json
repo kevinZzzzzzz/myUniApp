@@ -53,7 +53,9 @@
     {
       "path": "pages/index/index",
       "type": "home",
-      "style": {}
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
     },
     {
       "path": "pages/about/about",
