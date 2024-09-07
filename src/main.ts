@@ -3,7 +3,7 @@ import App from './App.vue'
 import store from './store'
 import { routeInterceptor, requestInterceptor, prototypeInterceptor } from './interceptors'
 import 'virtual:uno.css'
-import '@/style/index.scss'
+// import '@/style/index.scss'
 
 export function createApp() {
   const app = createSSRApp(App)

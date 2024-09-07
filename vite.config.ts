@@ -110,6 +110,11 @@ export default ({ command, mode }) => {
       __VITE_APP_PROXY__: JSON.stringify(VITE_APP_PROXY),
     },
     css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "./src/style/index.scss";`,
+        },
+      },
       postcss: {
         plugins: [
           // autoprefixer({
