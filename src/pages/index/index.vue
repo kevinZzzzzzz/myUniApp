@@ -9,6 +9,14 @@
 <template>
   <div class="home">
     <div class="home_header">
+      <wd-input
+        v-model="searchValue"
+        placeholder="请输入要搜索的内容"
+        suffix-icon="search"
+        clearable
+        no-border
+        @confirm="searchClick"
+      />
       <ul class="home_header_list">
         <li class="home_header_list_item" v-for="(item, idx) in tips" :key="idx">
           <image class="home_header_list_item_img" :src="`/static/image/${item.icon}.png`" alt="" />
@@ -16,7 +24,6 @@
         </li>
       </ul>
     </div>
-    <div class="home_activity">活动展示</div>
     <view class="uni-margin-wrap">
       <swiper class="swiper" circular :indicator-dots="true">
         <swiper-item>
@@ -29,6 +36,12 @@
           <view class="swiper-item uni-bg-blue">C</view>
         </swiper-item>
       </swiper>
+    </view>
+    <view class="home_menu">
+      <view class="home_menu_item" v-for="(item, idx) in menuList" :key="idx">
+        <image class="home_menu_item_img" :src="item.icon" mode="scaleToFill" />
+        <p class="home_menu_item_title">{{ item.title }}</p>
+      </view>
     </view>
     <div class="home_special">特殊活动</div>
     <div class="home_goods">
@@ -52,14 +65,28 @@ const tips: any[] = [
     icon: 'shouquanzhengpin',
   },
   {
-    name: '精选好物',
-    icon: 'haowu',
-  },
-  {
     name: '极速发货',
     icon: 'shandianfahuo',
   },
 ]
+const searchValue = ref('') // 搜索框值
+const menuList = ref([]) // 菜单列表
+const searchClick = () => {
+  console.log('iconClick')
+}
+
+onMounted(() => {
+  import('./menu.json').then((res: any) => {
+    menuList.value = res.default.data.slice(0, 7)
+    menuList.value.push({
+      id: 8,
+      sort: 8,
+      title: '更多',
+      icon: '',
+    })
+    console.log(menuList.value)
+  })
+})
 </script>
 
 <style scoped lang="scss">
@@ -68,16 +95,18 @@ const tips: any[] = [
 
   &_header {
     width: 100%;
-    display: flex;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: 0.9fr 0.8fr;
+    grid-gap: 15px;
+    align-items: center;
     margin-bottom: 10px;
     &_list {
-      width: fit-content;
+      // width: fit-content;
       display: grid;
-      grid-template-columns: repeat(3, 65px);
+      grid-template-columns: repeat(2, 1fr);
       grid-gap: 10px;
       padding: 5px 12px;
-      justify-content: right;
+      justify-content: end;
       background-image: linear-gradient(to right, #f7faa9, #8bfff5);
 
       &_item {
@@ -91,6 +120,27 @@ const tips: any[] = [
         &_text {
           font-size: 12px;
         }
+      }
+    }
+  }
+  &_menu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 10px;
+    &_item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &_img {
+        width: 40px;
+        height: 40px;
+        background: blue;
+      }
+      &_title {
+        font-size: 12px;
+        color: #333;
+        margin-top: 5px;
       }
     }
   }
@@ -116,7 +166,14 @@ const tips: any[] = [
     }
   }
 }
-
+:deep(.wd-input) {
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  border-radius: 20px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
 .uni-margin-wrap {
   width: 690rpx;
   width: 100%;
