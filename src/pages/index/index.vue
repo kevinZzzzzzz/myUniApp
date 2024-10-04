@@ -38,7 +38,12 @@
       </swiper>
     </view>
     <view class="home_menu">
-      <view class="home_menu_item" v-for="(item, idx) in menuList" :key="idx">
+      <view
+        class="home_menu_item"
+        v-for="(item, idx) in menuList"
+        :key="idx"
+        @click="gotoClassify(item)"
+      >
         <image class="home_menu_item_img" :src="item.icon" mode="scaleToFill" />
         <p class="home_menu_item_title">{{ item.title }}</p>
       </view>
@@ -75,16 +80,21 @@ const searchClick = () => {
   console.log('iconClick')
 }
 
+const gotoClassify = (data) => {
+  console.log('gotoClassify', data)
+  uni.navigateTo({
+    url: `/pages-sub/classify/index?activeId=${data.sort}`,
+  })
+}
 onMounted(() => {
-  import('./menu.json').then((res: any) => {
-    menuList.value = res.default.data.slice(0, 7)
+  import('@/constants/mock/menu.json').then((res: any) => {
+    menuList.value = res.default.data.slice(0, 9)
     menuList.value.push({
       id: 8,
-      sort: 8,
+      sort: 0,
       title: '更多',
       icon: '',
     })
-    console.log(menuList.value)
   })
 })
 </script>
@@ -125,7 +135,7 @@ onMounted(() => {
   }
   &_menu {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     margin-bottom: 10px;
     &_item {

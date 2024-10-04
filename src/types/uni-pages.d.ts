@@ -8,7 +8,9 @@ interface NavigateToOptions {
        "/pages/about/about" |
        "/pages/individual/index" |
        "/pages/shop/index" |
-       "/pages/stash/index";
+       "/pages/stash/index" |
+       "/pages-sub/classify/index" |
+       "/pages-sub/demo/index";
 }
 interface RedirectToOptions extends NavigateToOptions {}
 

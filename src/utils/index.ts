@@ -1,4 +1,5 @@
 import { pages, subPackages, tabBar } from '@/pages.json'
+import PLATFORM from './platform'
 const getLastPage = () => {
   // getCurrentPages() 至少有1个元素，所以不再额外判断
   // const lastPage = getCurrentPages().at(-1)
@@ -116,3 +117,21 @@ export const getNeedLoginPages = (): string[] => getAllPages('needLogin').map((p
  * 只得到 path 数组
  */
 export const needLoginPages: string[] = getAllPages('needLogin').map((page) => page.path)
+
+/**
+ * 获取navigate跳转携带的参数
+ * @params options
+ */
+export function getNavigateOptions(options: any, key: string) {
+  let result: any = null
+  if (PLATFORM.isMp) {
+    if (options.ctx.$scope.options[key]) {
+      result = options.ctx.$scope.options[key]
+    }
+  } else {
+    if (options.attrs[key]) {
+      result = options.attrs[key]
+    }
+  }
+  return result
+}
