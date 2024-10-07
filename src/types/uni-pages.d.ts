@@ -5,17 +5,18 @@
 
 interface NavigateToOptions {
   url: "/pages/index/index" |
-       "/pages/about/about" |
        "/pages/individual/index" |
+       "/pages/prizeDraw/index" |
        "/pages/shop/index" |
        "/pages/stash/index" |
        "/pages-sub/classify/index" |
+       "/pages-sub/demo/about" |
        "/pages-sub/demo/index";
 }
 interface RedirectToOptions extends NavigateToOptions {}
 
 interface SwitchTabOptions {
-  url: "/pages/index/index" | "/pages/about/about" | "/pages/stash/index" | "/pages/individual/index"
+  url: "/pages/index/index" | "/pages/shop/index" | "/pages/prizeDraw/index" | "/pages/stash/index" | "/pages/individual/index"
 }
 
 type ReLaunchOptions = NavigateToOptions | SwitchTabOptions;

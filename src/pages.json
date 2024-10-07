@@ -30,10 +30,16 @@
         "text": "首页"
       },
       {
-        "iconPath": "static/tabbar/example.png",
-        "selectedIconPath": "static/tabbar/exampleHL.png",
-        "pagePath": "pages/about/about",
-        "text": "关于"
+        "iconPath": "static/tabbar/shop.png",
+        "selectedIconPath": "static/tabbar/shopAct.png",
+        "pagePath": "pages/shop/index",
+        "text": "商城"
+      },
+      {
+        "iconPath": "static/tabbar/prizeDraw.png",
+        "selectedIconPath": "static/tabbar/prizeDrawAct.png",
+        "pagePath": "pages/prizeDraw/index",
+        "text": "抽奖"
       },
       {
         "iconPath": "static/tabbar/cangku.png",
@@ -58,14 +64,16 @@
       }
     },
     {
-      "path": "pages/about/about",
+      "path": "pages/individual/index",
       "type": "page",
       "style": {}
     },
     {
-      "path": "pages/individual/index",
+      "path": "pages/prizeDraw/index",
       "type": "page",
-      "style": {}
+      "style": {
+        "navigationBarTitleText": "抽奖"
+      }
     },
     {
       "path": "pages/shop/index",
@@ -88,6 +96,10 @@
           "style": {
             "navigationBarTitleText": "商品分类"
           }
+        },
+        {
+          "path": "demo/about",
+          "type": "page"
         },
         {
           "path": "demo/index",
