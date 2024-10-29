@@ -32,6 +32,13 @@
       </div>
     </div>
   </view>
+  <view>
+    <!-- <uni-popup ref="popup" background-color="#fff" type="center" @change="change">
+      <view class="popup-content" :class="{ 'popup-height': type === 'left' || type === 'right' }">
+        <text class="text">popup 内容</text>
+      </view>
+    </uni-popup> -->
+  </view>
 </template>
 
 <script lang="ts" setup>
