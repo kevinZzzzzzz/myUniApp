@@ -7,6 +7,7 @@ interface NavigateToOptions {
   url: "/pages/index/index" |
        "/pages/individual/index" |
        "/pages/prizeDraw/index" |
+       "/pages/prizeDrawCopy/index" |
        "/pages/shop/index" |
        "/pages/stash/index" |
        "/pages-sub/classify/index" |

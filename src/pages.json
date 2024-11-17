@@ -76,6 +76,13 @@
       }
     },
     {
+      "path": "pages/prizeDrawCopy/index",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "抽奖"
+      }
+    },
+    {
       "path": "pages/shop/index",
       "type": "page",
       "style": {}

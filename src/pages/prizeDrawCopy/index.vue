@@ -124,10 +124,7 @@ const runDialer = () => {
 <style lang="scss" scoped>
 .PrizeDraw {
   height: 100vh;
-  // background-color: #c7e8ef;
-  background: url('http://xunpinpin.oss-cn-beijing.aliyuncs.com/6ce42c0e691fccf8f4d94b51ab4f432b.jpg')
-    no-repeat;
-  background-size: cover;
+  background-color: #c7e8ef;
   position: relative;
   &_content {
     width: 100%;
