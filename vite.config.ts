@@ -158,6 +158,10 @@ export default ({ command, mode }) => {
           drop_debugger: true,
         },
       },
+      lib: {
+        entry: 'src/main.ts',
+        formats: ['es'],
+      },
     },
   })
 }
