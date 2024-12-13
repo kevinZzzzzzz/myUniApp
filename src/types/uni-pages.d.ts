@@ -6,6 +6,7 @@
 interface NavigateToOptions {
   url: "/pages/index/index" |
        "/pages/individual/index" |
+       "/pages/login/index" |
        "/pages/prizeDraw/index" |
        "/pages/prizeDrawCopy/index" |
        "/pages/shop/index" |

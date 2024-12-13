@@ -69,6 +69,14 @@
       "style": {}
     },
     {
+      "path": "pages/login/index",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "登录"
+      },
+      "needLogin": true
+    },
+    {
       "path": "pages/prizeDraw/index",
       "type": "page",
       "style": {

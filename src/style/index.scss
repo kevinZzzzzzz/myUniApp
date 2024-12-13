@@ -1,5 +1,34 @@
 // @import './iconfont.css';
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  list-style: none;
+}
+* {
+  box-sizing: border-box;
+}
+view::-webkit-scrollbar {
+  display: none;
+}
+view {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 .test {
   // 可以通过 @apply 多个样式封装整体样式
   @apply mt-4 ml-4;
@@ -15,6 +44,7 @@ page {
 
   // 修改按钮背景色
   // --wot-button-primary-bg-color: green;
+  --theme-btn-primary-bg-color: #4dacf0;
 }
 
 ul {
@@ -26,4 +56,11 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
