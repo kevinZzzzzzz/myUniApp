@@ -145,14 +145,17 @@ const getAuthCode = () => {
     flex-direction: column;
     &_main {
       width: 100%;
-      height: 68%;
+      // height: 68%;
       padding: 40px 10px 20px;
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 20px;
+      // grid-template-rows: 20px;
       justify-content: center;
       align-items: center;
-      grid-gap: 10px;
+      grid-gap: 15px;
+      &_title {
+        margin-bottom: 30px;
+      }
       &_line {
         width: 100%;
         height: 100%;
