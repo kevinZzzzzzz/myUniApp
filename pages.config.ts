@@ -34,10 +34,10 @@ export default defineUniPages({
         text: '首页',
       },
       {
-        iconPath: 'static/tabbar/shop.png',
-        selectedIconPath: 'static/tabbar/shopAct.png',
+        iconPath: 'static/tabbar/forum.png',
+        selectedIconPath: 'static/tabbar/forumAct.png',
         pagePath: 'pages/shop/index',
-        text: '商城',
+        text: '论坛',
       },
       {
         iconPath: 'static/tabbar/prizeDraw.png',
@@ -46,10 +46,10 @@ export default defineUniPages({
         text: '抽奖',
       },
       {
-        iconPath: 'static/tabbar/cangku.png',
-        selectedIconPath: 'static/tabbar/cangkuAct.png',
+        iconPath: 'static/tabbar/ShoppingCar.png',
+        selectedIconPath: 'static/tabbar/ShoppingCarAct.png',
         pagePath: 'pages/stash/index',
-        text: '仓库',
+        text: '购物车',
       },
       {
         iconPath: 'static/tabbar/wode.png',
