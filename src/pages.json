@@ -32,7 +32,7 @@
       {
         "iconPath": "static/tabbar/forum.png",
         "selectedIconPath": "static/tabbar/forumAct.png",
-        "pagePath": "pages/shop/index",
+        "pagePath": "pages/forum/index",
         "text": "论坛"
       },
       {
@@ -44,7 +44,7 @@
       {
         "iconPath": "static/tabbar/ShoppingCar.png",
         "selectedIconPath": "static/tabbar/ShoppingCarAct.png",
-        "pagePath": "pages/stash/index",
+        "pagePath": "pages/shoppingCar/index",
         "text": "购物车"
       },
       {
@@ -62,6 +62,14 @@
       "style": {
         "navigationBarTitleText": "首页"
       }
+    },
+    {
+      "path": "pages/forum/index",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "论坛"
+      },
+      "needLogin": true
     },
     {
       "path": "pages/individual/index",
@@ -91,14 +99,12 @@
       }
     },
     {
-      "path": "pages/shop/index",
+      "path": "pages/shoppingCar/index",
       "type": "page",
-      "style": {}
-    },
-    {
-      "path": "pages/stash/index",
-      "type": "page",
-      "style": {}
+      "style": {
+        "navigationBarTitleText": "购物车"
+      },
+      "needLogin": true
     }
   ],
   "subPackages": [

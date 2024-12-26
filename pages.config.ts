@@ -36,7 +36,7 @@ export default defineUniPages({
       {
         iconPath: 'static/tabbar/forum.png',
         selectedIconPath: 'static/tabbar/forumAct.png',
-        pagePath: 'pages/shop/index',
+        pagePath: 'pages/forum/index',
         text: '论坛',
       },
       {
@@ -48,7 +48,7 @@ export default defineUniPages({
       {
         iconPath: 'static/tabbar/ShoppingCar.png',
         selectedIconPath: 'static/tabbar/ShoppingCarAct.png',
-        pagePath: 'pages/stash/index',
+        pagePath: 'pages/shoppingCar/index',
         text: '购物车',
       },
       {
@@ -65,7 +65,7 @@ export default defineUniPages({
       type: 'home',
     },
     {
-      path: 'pages/shop/index',
+      path: 'pages/forum/index',
       type: 'page',
     },
     {
@@ -73,11 +73,11 @@ export default defineUniPages({
       type: 'page',
     },
     {
-      path: 'pages/shop/index',
+      path: 'pages/prizeDraw/index',
       type: 'page',
     },
     {
-      path: 'pages/stash/index',
+      path: 'pages/shoppingCar/index',
       type: 'page',
     },
   ],

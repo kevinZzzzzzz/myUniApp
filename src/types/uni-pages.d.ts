@@ -5,12 +5,12 @@
 
 interface NavigateToOptions {
   url: "/pages/index/index" |
+       "/pages/forum/index" |
        "/pages/individual/index" |
        "/pages/login/index" |
        "/pages/prizeDraw/index" |
        "/pages/prizeDrawCopy/index" |
-       "/pages/shop/index" |
-       "/pages/stash/index" |
+       "/pages/shoppingCar/index" |
        "/pages-sub/classify/index" |
        "/pages-sub/demo/about" |
        "/pages-sub/demo/index";
@@ -18,7 +18,7 @@ interface NavigateToOptions {
 interface RedirectToOptions extends NavigateToOptions {}
 
 interface SwitchTabOptions {
-  url: "/pages/index/index" | "/pages/shop/index" | "/pages/prizeDraw/index" | "/pages/stash/index" | "/pages/individual/index"
+  url: "/pages/index/index" | "/pages/forum/index" | "/pages/prizeDraw/index" | "/pages/shoppingCar/index" | "/pages/individual/index"
 }
 
 type ReLaunchOptions = NavigateToOptions | SwitchTabOptions;

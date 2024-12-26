@@ -1,3 +1,11 @@
+<route lang="json5">
+{
+  style: {
+    navigationBarTitleText: '购物车',
+  },
+  needLogin: true,
+}
+</route>
 <template>
   <div class="main"></div>
 </template>
