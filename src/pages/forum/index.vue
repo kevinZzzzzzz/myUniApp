@@ -1,7 +1,7 @@
 <route lang="json5">
 {
   style: {
-    navigationBarTitleText: '论坛',
+    navigationBarTitleText: '社区',
   },
   needLogin: true,
 }
