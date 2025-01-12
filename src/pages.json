@@ -82,6 +82,7 @@
       "style": {
         "navigationBarTitleText": "登录"
       },
+      "layout": false,
       "needLogin": true
     },
     {

@@ -3,6 +3,7 @@
   style: {
     navigationBarTitleText: '登录',
   },
+  layout: false, // 不使用默认布局
   needLogin: true,
 }
 </route>
@@ -64,7 +65,9 @@
           </div>
         </div>
         <div class="LoginPage_block_main_line">
-          <wd-button block custom-class="custom-login custom-login-phone">登录</wd-button>
+          <wd-button block custom-class="custom-login custom-login-phone" @click="handleLogin">
+            登录
+          </wd-button>
         </div>
       </div>
       <div class="LoginPage_block_bottom">
@@ -85,13 +88,20 @@
         >
           密码登录
         </wd-button>
-        <wd-button block custom-class="custom-login custom-login-weixin">微信登录</wd-button>
+        <wd-button
+          block
+          custom-class="custom-login custom-login-weixin"
+          @click="handleChangeLoginWay('wechat')"
+        >
+          微信登录
+        </wd-button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { isMp } from '@/utils/platform'
 import { reactive, ref } from 'vue'
 defineOptions({
   name: 'LoginPage',
@@ -110,11 +120,98 @@ const loginInfo = reactive({
     authCode: '',
   },
 })
-
+// 切换登录方式
 const handleChangeLoginWay = (way: ILoginWay) => {
+  if (way === 'wechat') {
+    if (!isMp) {
+      uni.showToast({
+        icon: 'none',
+        title: '请在小程序内登录',
+      })
+      return false
+    }
+    wx.login({
+      success: (res) => {
+        if (res.code) {
+          // 发起网络请求
+          console.log(res.code)
+          /**
+            $apiLoginWechat({
+              code: res.code,
+            }).then((res) => {
+             handleLoginAfter(res)
+            })
+           */
+        }
+      },
+      fail: (err) => {
+        uni.showToast({
+          icon: 'error',
+          title: '登录失败！',
+        })
+        console.log(err)
+      },
+    })
+    return false
+  }
   loginWay.value = way
+  loginInfo.info = {
+    phone: '',
+    password: '',
+    authCode: '',
+  }
 }
-
+// 点击登录
+const handleLogin = () => {
+  if (!loginInfo.info.phone) {
+    uni.showToast({
+      icon: 'none',
+      title: '请输入手机号码',
+    })
+    return false
+  }
+  if (loginWay.value === 'phone') {
+    if (!loginInfo.info.authCode) {
+      uni.showToast({
+        icon: 'none',
+        title: '请输入验证码',
+      })
+    }
+  } else if (loginWay.value === 'password') {
+    if (!loginInfo.info.password) {
+      uni.showToast({
+        icon: 'none',
+        title: '请输入密码',
+      })
+    }
+  }
+  /**
+   * $apiLogin({
+      phone: loginInfo.info.phone,
+      password: loginInfo.info.password,
+      authCode: loginInfo.info.authCode,
+    )}.then((res) => {
+      handleLoginAfter(res)
+      })
+   */
+}
+// 登录成功后处理流程
+const handleLoginAfter = (authInfo) => {
+  // 登录成功后，将用户信息存储到本地
+  // const userInfo = authInfo.userInfo
+  // uni.setStorageSync('userInfo', userInfo)
+  // uni.setStorageSync('token', authInfo.token)
+  uni.showToast({
+    icon: 'success',
+    title: '登录成功！',
+  })
+  setTimeout(() => {
+    uni.navigateTo({
+      url: '/pages/index/index',
+    })
+  }, 1000)
+}
+// 获取验证码
 const getAuthCode = () => {
   if (waitAuthCode.value) return false
   waitAuthCode.value = true
