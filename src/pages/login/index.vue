@@ -101,6 +101,7 @@
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from '@/store'
 import { isMp } from '@/utils/platform'
 import { reactive, ref } from 'vue'
 defineOptions({
@@ -109,6 +110,7 @@ defineOptions({
 type ILoginWay = 'wechat' | 'password' | 'phone'
 const sendMinute = 60
 let waitTimer: any = null
+const userStore = useUserStore()
 
 const waitAuthCode = ref(false) // 等待验证码
 const waitAuthTime = ref(sendMinute) // 等待倒计时
@@ -185,6 +187,7 @@ const handleLogin = () => {
       })
     }
   }
+  handleLoginAfter(123)
   /**
    * $apiLogin({
       phone: loginInfo.info.phone,
@@ -199,14 +202,14 @@ const handleLogin = () => {
 const handleLoginAfter = (authInfo) => {
   // 登录成功后，将用户信息存储到本地
   // const userInfo = authInfo.userInfo
-  // uni.setStorageSync('userInfo', userInfo)
-  // uni.setStorageSync('token', authInfo.token)
+  // userStore.setUserInfo(userInfo)
+  userStore.setUserToken(authInfo)
   uni.showToast({
     icon: 'success',
     title: '登录成功！',
   })
   setTimeout(() => {
-    uni.navigateTo({
+    uni.reLaunch({
       url: '/pages/index/index',
     })
   }, 1000)

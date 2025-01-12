@@ -67,7 +67,8 @@
       "path": "pages/forum/index",
       "type": "page",
       "style": {
-        "navigationBarTitleText": "社区"
+        "navigationBarTitleText": "社区",
+        "backgroundColor": "#f9fafb"
       },
       "needLogin": true
     },
