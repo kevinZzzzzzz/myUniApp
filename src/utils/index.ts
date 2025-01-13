@@ -135,3 +135,11 @@ export function getNavigateOptions(options: any, key: string) {
   }
   return result
 }
+
+/**
+ *获取加载图片地址
+ * @param imgPath: string
+ */
+export const requireImg = (imgPath: string) => {
+  return new URL(imgPath, import.meta.url).href
+}

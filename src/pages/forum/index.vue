@@ -22,13 +22,18 @@
         {{ item.name }}
       </div>
     </div>
-    <div class="forum_posts"></div>
+    <div class="forum_posts">
+      <div v-for="(item, idx) in posts" :key="idx">
+        <PostsItem :data="item" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { categoryList, postsList } from './mock'
+import PostsItem from './components/PostsItem.vue'
 defineOptions({
   name: 'ForumPage',
 })
@@ -71,6 +76,12 @@ page {
         background: #dbeafe;
       }
     }
+  }
+  &_posts {
+    padding: 14px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
 </style>
