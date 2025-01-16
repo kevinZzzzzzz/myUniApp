@@ -96,6 +96,16 @@
       </div>
       <div class="LoginPage_main_line">
         <wd-divider>切换登录方式</wd-divider>
+        <ul class="LoginPage_main_line_other">
+          <li
+            class="LoginPage_main_line_other_item"
+            v-for="item in otherLoginWayList"
+            :key="item.value"
+            @click="clickLoginHander(item.value)"
+          >
+            <img :src="item.icon" class="LoginPage_main_line_other_item_icon" alt="" />
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -105,6 +115,7 @@
 import { useUserStore } from '@/store'
 import { isMp } from '@/utils/platform'
 import { reactive, ref } from 'vue'
+import weChat from '@/static/image/weChatIcon.png'
 
 defineOptions({
   name: 'LoginPage',
@@ -116,6 +127,14 @@ const userStore = useUserStore()
 const loginWayList = [
   { label: '密码登录', value: 'password' },
   { label: '验证码登录', value: 'phone' },
+]
+const otherLoginWayList = [
+  {
+    label: '微信登录',
+    value: 'weChat',
+    icon: weChat,
+    desc: '微信登录',
+  },
 ]
 const waitAuthCode = ref(false) // 等待验证码
 const waitAuthTime = ref(sendMinute) // 等待倒计时
@@ -134,7 +153,56 @@ const handleChangeLoginWay = (way) => {
   loginWay.value = way
 }
 const handleLogin = () => {
-  // xxx
+  if (!loginInfo.info.phone) {
+    uni.showToast({
+      icon: 'none',
+      title: '请输入手机号码',
+    })
+    return false
+  }
+  if (loginWay.value === 'phone') {
+    if (!loginInfo.info.authCode) {
+      uni.showToast({
+        icon: 'none',
+        title: '请输入验证码',
+      })
+      return false
+    }
+  } else if (loginWay.value === 'password') {
+    if (!loginInfo.info.password) {
+      uni.showToast({
+        icon: 'none',
+        title: '请输入密码',
+      })
+      return false
+    }
+  }
+  handleLoginAfter(123)
+  /**
+   * $apiLogin({
+      phone: loginInfo.info.phone,
+      password: loginInfo.info.password,
+      authCode: loginInfo.info.authCode,
+    )}.then((res) => {
+      handleLoginAfter(res)
+      })
+   */
+}
+// 登录成功后处理流程
+const handleLoginAfter = (authInfo) => {
+  // 登录成功后，将用户信息存储到本地
+  // const userInfo = authInfo.userInfo
+  // userStore.setUserInfo(userInfo)
+  userStore.setUserToken(authInfo)
+  uni.showToast({
+    icon: 'success',
+    title: '登录成功！',
+  })
+  setTimeout(() => {
+    uni.reLaunch({
+      url: '/pages/index/index',
+    })
+  }, 1000)
 }
 // 获取验证码
 const getAuthCode = () => {
@@ -149,9 +217,47 @@ const getAuthCode = () => {
     }
   }, 1000)
 }
+
+const clickLoginHander = (value) => {
+  if (value === 'weChat') {
+    if (!isMp) {
+      uni.showToast({
+        icon: 'none',
+        title: '微信登录功能暂未开放',
+      })
+      return false
+    }
+    wx.login({
+      success: (res) => {
+        if (res.code) {
+          // 发起网络请求
+          console.log(res.code)
+          /**
+            $apiLoginWechat({
+              code: res.code,
+            }).then((res) => {
+             handleLoginAfter(res)
+            })
+           */
+        }
+      },
+      fail: (err) => {
+        uni.showToast({
+          icon: 'error',
+          title: '登录失败！',
+        })
+        console.log(err)
+      },
+    })
+  }
+}
 </script>
 
 <style scoped lang="scss">
+/* #ifdef H5 */ //这里是H5中的写法
+page {
+  background-color: #e1f2fe;
+}
 .LoginPage {
   width: 100%;
   // background-color: #e1f2fe;
@@ -190,14 +296,14 @@ const getAuthCode = () => {
         0px 4px 6px -4px rgba(0, 0, 0, 0.1),
         0px 10px 15px -3px rgba(0, 0, 0, 0.1);
       // padding: 8px 0;
-      background: #fbfdff;
+      background: #e9eef3;
       &_item {
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         &_label {
-          padding: 10px 50px;
+          padding: 10px 10vw;
           border-radius: 12px;
           // height: 100%;
           text-align: center;
@@ -217,6 +323,31 @@ const getAuthCode = () => {
       width: 100%;
       height: 48px;
       margin-top: 32px;
+      &_other {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 32px;
+        &_item {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          box-sizing: border-box;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(10px);
+          box-shadow:
+            0px 4px 6px -4px rgba(0, 0, 0, 0.1),
+            0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &_icon {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
     }
   }
 }
